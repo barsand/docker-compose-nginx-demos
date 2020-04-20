@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+    demo2:
+        image: nginx
+        ports:
+            - 80:80
+        volumes:
+            - ./services/nginx:/etc/nginx
+
