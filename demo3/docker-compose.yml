@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+    web:
+        build:
+            context: ./services/web
+            dockerfile: Dockerfile
+        command: gunicorn --bind 0.0.0.0:5000 manage:app
+        expose:
+            - 5000
+        env_file:
+            - ./services/env
+
+    demo3:
+        build: ./services/nginx
+        ports:
+            - 80:80
+        depends_on:
+            - web
